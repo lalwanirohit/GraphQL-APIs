@@ -1,7 +1,7 @@
-import mongoose, { Schema, mongo } from "mongoose";
+import mongoose from "mongoose";
 
 // Schema
-const userSchema = new Schema({
+const userSchema = mongoose.Schema({
     firstName: { type: String, trim: true },
     middleName: { type: String, trim: true },
     lastName: { type: String, trim: true },

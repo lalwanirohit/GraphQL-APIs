@@ -1,13 +1,15 @@
-import mongoose from "mongoose";
-// import { generateErrorResponse, generateSuccessResponse } from "../helpers/apiHelper.js";
+import mongoose, { mongo } from "mongoose";
 
-export default function connectDb () {
+const connectDb = async (DATABASE_URL) => {
     try {
-        const dbName = process.env.DATABASE;
-        console.log('mongodb://localhost:27017/'+dbName);
-        mongoose.connect('mongodb://localhost:27017/'+dbName);
-        console.log('Connected successfully ...');
+        const DB_OPTIONS = {
+            dbName: "graphqlpractice"
+        }
+        await mongoose.connect(DATABASE_URL, DB_OPTIONS);
+        console.log("Connected Successfully ...");
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
     }
 }
+
+export default connectDb;
