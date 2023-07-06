@@ -5,7 +5,7 @@ import { graphqlHTTP } from "express-graphql";
 dotenv.config();
 
 import connectDb from "./config/database.js";
-// import schema from "./graphql/schema.js";
+import schema from "./graphql/schema.js";
 import userModel from "./models/user.js";
 
 const port = process.env.PORT;
@@ -24,16 +24,16 @@ app.use(cors());
 connectDb(databaseUrl);
 
 // Graphql Route
-// app.use("/graphql", graphqlHTTP((req, res) => ({
-//     schema,
-//     graphiql: true,
-//     //customFormatErrorFn : (err) => { console.log(err)},
-//     rootValue: {
-//         request: req,
-//         response: res,
-//     },
-//     pretty: true,
-// })));
+app.use("/graphql", graphqlHTTP((req, res) => ({
+    schema,
+    graphiql: true,
+    //customFormatErrorFn : (err) => { console.log(err)},
+    rootValue: {
+        request: req,
+        response: res,
+    },
+    pretty: true,
+})));
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

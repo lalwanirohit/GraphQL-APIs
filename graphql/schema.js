@@ -3,7 +3,7 @@ import {
     GraphQLObjectType as ObjectType,
 } from "graphql";
 
-
+import createUser from "./mutations/createUser.js";
 
 const schema = new Schema({
     query: new ObjectType({
@@ -14,9 +14,9 @@ const schema = new Schema({
     mutation: new ObjectType({
         name: "Mutation",
         fields: {
-            
+            createUser,
         },
     }),
 });
 
-module.exports = schema;
+export default schema;
